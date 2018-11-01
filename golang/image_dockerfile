@@ -1,0 +1,7 @@
+FROM harbor.enncloud.cn/qinzhao-harbor/ubuntu:v1.0.0
+ADD beegotest /tmp/beego
+EXPOSE 8080
+
+WORKDIR /tmp/beego
+
+CMD ["./mytest"]
