@@ -7,7 +7,9 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                    sh 'cd OpenUrl/src/pyrmont/'
+                    sh 'cd /var/jenkins_home/workspace/cicdtest/OpenUrl/src/pyrmont/'
+                    sh 'pwd'
+                    sh 'ls'
                     sh 'javac *.java'
                     sh 'pwd'
                     sh 'ls'
