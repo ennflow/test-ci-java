@@ -10,7 +10,7 @@ pipeline {
                 sh 'pwd'
                 sh 'ls'
                 sh 'go env'
-                sh 'cp -r /var/jenkins_home/workspace/cicdtest/* /go/src/'
+                sh 'cp -R /var/jenkins_home/workspace/cicdtest/beeblog /go/src/'
                 sh 'cd /go/src/beeblog/'
                 sh 'pwd'
                 sh 'ls'
