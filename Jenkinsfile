@@ -7,7 +7,6 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'mvn -B -DskipTests clean package'
                 sh 'pwd'
                 sh 'go env'
                 sh 'cp -r /builds/weihongwei/cicdproject/* /go/src/'
