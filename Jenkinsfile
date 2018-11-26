@@ -15,7 +15,7 @@ pipeline {
                     sh 'echo ====================/openurl======================='
                     sh 'ls /var/jenkins_home/workspace/cicdtest/OpenUrl/src/pyrmont/'
                     sh 'echo ====================/openurl======================='
-                    sh 'jar cvfm  /var/jenkins_home/workspace/cicdtest/OpenUrl/pyrmont.jar /var/jenkins_home/workspace/cicdtest/OpenUrl/mymanifest -C src/ .'
+                    sh 'jar cvfm  /var/jenkins_home/workspace/cicdtest/OpenUrl/pyrmont.jar /var/jenkins_home/workspace/cicdtest/OpenUrl/mymanifest -C /var/jenkins_home/workspace/cicdtest/OpenUrl/src/ .'
                     sh 'ls /var/jenkins_home/workspace/cicdtest/OpenUrl/'
             }
         }
