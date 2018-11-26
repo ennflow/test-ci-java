@@ -24,7 +24,6 @@ pipeline {
             agent {
                     dockerfile {
                                   filename 'Dockerfile'
-                                  label 'cicdtest-label'
                                   registryUrl 'https://harbor.enncloud.cn'
                                }
                     }
