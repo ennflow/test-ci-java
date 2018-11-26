@@ -3,6 +3,8 @@ pipeline {
         docker {
             image 'harbor.enncloud.cn/enncloud/ceres-build:jdk8' 
         }
+     }
+   agent {
         dockerfile {
            filename 'Dockerfile'
            label 'cicdtest-label'
