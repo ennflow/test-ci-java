@@ -13,8 +13,8 @@ pipeline {
                 sh 'cd /go/src/beeblog/'
                 sh 'echo "==========" > test.txt'
                 sh 'go build -o mytest'
-                sh 'cp mytest /builds/weihongwei/cicdproject/beeblog/' 
-                sh 'ls /builds/weihongwei/cicdproject/beeblog/'
+                sh 'cp mytest /var/jenkins_home/workspace/cicdtest/beeblog/' 
+                sh 'ls /var/jenkins_home/workspace/cicdtest/beeblog/'
             }
         }
     }
