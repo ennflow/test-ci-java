@@ -23,6 +23,7 @@ pipeline {
        stage('deploy') {
             agent {
                     dockerfile {
+                                  image 'docker'
                                   filename 'Dockerfile'
                                   registryUrl 'https://harbor.enncloud.cn'
                                }
