@@ -1,5 +1,5 @@
 pipeline {
-    agent {
+   agent {
         docker {
             image 'harbor.enncloud.cn/enncloud/ceres-build:jdk8' 
         }
@@ -24,7 +24,7 @@ pipeline {
                     sh 'ls /var/jenkins_home/workspace/cicdtest/OpenUrl/'
             }
         }
-       age('deploy') { 
+       stage('deploy') { 
             steps {
                    sh 'ls'
                    sh 'pwd'
