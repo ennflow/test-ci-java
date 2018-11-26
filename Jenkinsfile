@@ -11,14 +11,12 @@ pipeline {
                     sh 'pwd'
                     sh 'ls'
                     sh 'javac /var/jenkins_home/workspace/cicdtest/OpenUrl/src/pyrmont/*.java'
-                    sh 'pwd'
-                    sh 'ls'
                     sh 'cd /var/jenkins_home/workspace/cicdtest/OpenUrl/'
                     sh 'echo ====================/openurl======================='
                     sh 'ls'
                     sh 'echo ====================/openurl======================='
-                    sh 'jar cvfm  pyrmont.jar mymanifest -C src/ .'
-                    sh 'ls'
+                    sh 'jar cvfm  /var/jenkins_home/workspace/cicdtest/OpenUrl/pyrmont.jar mymanifest -C src/ .'
+                    sh 'ls /var/jenkins_home/workspace/cicdtest/OpenUrl/'
             }
         }
     }
