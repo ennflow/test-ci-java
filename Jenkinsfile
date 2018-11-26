@@ -12,9 +12,9 @@ pipeline {
                     sh 'pwd'
                     sh 'ls'
                     sh 'cd /var/jenkins_home/workspace/cicdtest/OpenUrl/'
-                    sh 'echo '====================/openurl=======================''
+                    sh 'echo ====================/openurl======================='
                     sh 'ls'
-                    sh 'echo '====================/openurl=======================''
+                    sh 'echo ====================/openurl======================='
                     sh 'jar cvfm  pyrmont.jar mymanifest -C src/ .'
                     sh 'ls'
             }
