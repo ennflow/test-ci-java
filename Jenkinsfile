@@ -2,7 +2,6 @@ pipeline {
     agent {
         docker {
             image 'harbor.enncloud.cn/enncloud/golang:1.8.3' 
-            args '-v /root/.m2:/root/.m2' 
         }
     }
     stages {
