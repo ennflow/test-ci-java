@@ -10,7 +10,7 @@ pipeline {
                     sh 'cd /var/jenkins_home/workspace/cicdtest/OpenUrl/src/pyrmont/'
                     sh 'pwd'
                     sh 'ls'
-                    sh 'javac *.java'
+                    sh 'javac /var/jenkins_home/workspace/cicdtest/OpenUrl/src/pyrmont/*.java'
                     sh 'pwd'
                     sh 'ls'
                     sh 'cd /var/jenkins_home/workspace/cicdtest/OpenUrl/'
