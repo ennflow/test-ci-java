@@ -1,22 +1,22 @@
 pipeline {
     agent {
         docker {
-            image 'harbor.enncloud.cn/enncloud/golang:1.8.3' 
+            image 'harbor.enncloud.cn/enncloud/ceres-build:jdk8' 
         }
     }
     stages {
         stage('Build') { 
             steps {
-                sh 'pwd'
-                sh 'ls'
-                sh 'go env'
-                sh 'cp -R /var/jenkins_home/workspace/cicdtest/beeblog /go/src/'
-                sh 'cd /go/src/beeblog/'
-                sh 'pwd'
-                sh 'ls'
-                sh 'go build -o mytest'
-                sh 'cp mytest /var/jenkins_home/workspace/cicdtest/beeblog/' 
-                sh 'ls /var/jenkins_home/workspace/cicdtest/beeblog/'
+                    sh 'cd OpenUrl/src/pyrmont/'
+                    sh 'javac *.java'
+                    sh 'pwd'
+                    sh 'ls'
+                    sh 'cd /var/jenkins_home/workspace/cicdtest/OpenUrl/'
+                    sh 'echo '====================/openurl=======================''
+                    sh 'ls'
+                    sh 'echo '====================/openurl=======================''
+                    sh 'jar cvfm  pyrmont.jar mymanifest -C src/ .'
+                    sh 'ls'
             }
         }
     }
