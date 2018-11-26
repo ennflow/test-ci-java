@@ -3,6 +3,11 @@ pipeline {
         docker {
             image 'harbor.enncloud.cn/enncloud/ceres-build:jdk8' 
         }
+        dockerfile {
+           filename 'Dockerfile'
+           label 'cicdtest-label'
+           registryUrl 'https://harbor.enncloud.cn'
+       }
     }
     stages {
         stage('Build') { 
@@ -19,17 +24,7 @@ pipeline {
                     sh 'ls /var/jenkins_home/workspace/cicdtest/OpenUrl/'
             }
         }
-    }
-  agent {
-     dockerfile {
-        filename 'Dockerfile'
-        label 'cicdtest-label'
-        additionalBuildArgs  '--build-arg version=1.0.2'
-        registryUrl 'https://harbor.enncloud.cn'
-    }
-  }
-  stages  {
-        stage('deploy') { 
+       age('deploy') { 
             steps {
                    sh 'ls'
                    sh 'pwd'
