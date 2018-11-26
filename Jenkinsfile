@@ -1,18 +1,12 @@
 pipeline {
-   agent {
-        docker {
-            image 'harbor.enncloud.cn/enncloud/ceres-build:jdk8' 
-        }
-     }
-   agent {
-        dockerfile {
-           filename 'Dockerfile'
-           label 'cicdtest-label'
-           registryUrl 'https://harbor.enncloud.cn'
-       }
-    }
+  agent none
     stages {
         stage('Build') { 
+           agent {
+               docker {
+                    image 'harbor.enncloud.cn/enncloud/ceres-build:jdk8' 
+                      }
+                  }
             steps {
                     sh 'cd /var/jenkins_home/workspace/cicdtest/OpenUrl/src/pyrmont/'
                     sh 'pwd'
@@ -24,9 +18,16 @@ pipeline {
                     sh 'echo ====================/openurl======================='
                     sh 'jar cvfm  /var/jenkins_home/workspace/cicdtest/OpenUrl/pyrmont.jar /var/jenkins_home/workspace/cicdtest/OpenUrl/mymanifest -C /var/jenkins_home/workspace/cicdtest/OpenUrl/src/ .'
                     sh 'ls /var/jenkins_home/workspace/cicdtest/OpenUrl/'
-            }
-        }
-       stage('deploy') { 
+                  }
+             }
+       stage('deploy') {
+            agent {
+                    dockerfile {
+                                  filename 'Dockerfile'
+                                  label 'cicdtest-label'
+                                  registryUrl 'https://harbor.enncloud.cn'
+                               }
+                    }
             steps {
                    sh 'ls'
                    sh 'pwd'
