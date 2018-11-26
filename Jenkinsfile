@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'go env'
-                sh 'cp -r /builds/weihongwei/cicdproject/* /go/src/'
+                sh 'cp -r /var/jenkins_home/workspace/cicdtest/* /go/src/'
                 sh 'cd /go/src/beeblog/'
                 sh 'echo "==========" > test.txt'
                 sh 'go build -o mytest'
