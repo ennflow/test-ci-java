@@ -29,6 +29,7 @@ pipeline {
          steps {
               sh 'ls'
               sh 'docker build -t harbor.enncloud.cn/create-cicd-hub/cicdtest-java:v112 .'
+              sh 'docker push harbor.enncloud.cn/create-cicd-hub/cicdtest-java:v112'
          }
        }
      } 
