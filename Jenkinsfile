@@ -27,6 +27,9 @@ pipeline {
              }
            }
          steps {
+              sh 'pwd'
+              sh 'ls'
+              sh 'echo *******************************************************************'
               sh 'ls /var/jenkins_home/workspace/cicdtest/OpenUrl/'
               sh 'docker build -t harbor.enncloud.cn/create-cicd-hub/cicdtest-java:v1127 .'
               sh 'docker push harbor.enncloud.cn/create-cicd-hub/cicdtest-java:v1127'
