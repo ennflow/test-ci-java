@@ -25,10 +25,6 @@ pipeline {
             docker {
                    image 'harbor.enncloud.cn/enncloud/iamge-builder:v2.2'
              }
-             dockerfile {
-                   filename 'Dockerfile'
-                   additionalBuildArgs  '--build-arg version=1.0.2'
-               }
            }
          steps {
               sh 'ls'
