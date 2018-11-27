@@ -23,7 +23,7 @@ pipeline {
        stage('deploy') {
          withDockerRegistry(url:'https://harbor.enncloud.cn'){
          def dockerfile = 'Dockerfile'
-         def customImage = docker.build("harbor.enncloud.cn/create-cicd-hub/cicdtest-java:v1126","-f $(dockerfile) .")
+         def customImage = docker.build("harbor.enncloud.cn/create-cicd-hub/cicdtest-java:v1126","-f ${dockerfile} .")
          customImage.push()
          }
        }
