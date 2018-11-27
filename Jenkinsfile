@@ -23,7 +23,7 @@ pipeline {
        stage('Deploy') {
           agent {
             docker {
-                   image 'harbor.enncloud.cn/enncloud/iamge-builder:v2.2'
+                   image 'harbor.enncloud.cn/enncloud/image-builder:v2.2'
              }
            }
          steps {
