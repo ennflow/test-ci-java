@@ -28,6 +28,9 @@ pipeline {
                    additionalBuildArgs  '--build-arg version=1.0.2'
                }
            }
+         steps {
+              sh 'ls'
+         }
        }
      } 
 }
