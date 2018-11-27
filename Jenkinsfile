@@ -20,16 +20,14 @@ pipeline {
                     sh 'ls /var/jenkins_home/workspace/cicdtest/OpenUrl/'
                   }
              }
-       stage('deploy') {
-         agent {
+ 
+       agent {
+                // Equivalent to "docker build -f Dockerfile.build --build-arg version=1.0.2 ./build/
            dockerfile {
-         withDockerRegistry(url:'https://harbor.enncloud.cn'){
-         def dockerfile = 'Dockerfile'
-         def customImage = docker.build("harbor.enncloud.cn/create-cicd-hub/cicdtest-java:v1126","-f ${dockerfile} .")
-         customImage.push()
-         }
+                filename 'Dockerfile'
+                label 'image-builder'
+                additionalBuildArgs  '--build-arg version=1.0.2'
+              }
            }
-        }
-         }
      } 
 }
