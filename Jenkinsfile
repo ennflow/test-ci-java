@@ -20,12 +20,16 @@ pipeline {
                     sh 'ls /var/jenkins_home/workspace/cicdtest/OpenUrl/'
                   }
              }
-     }
-       stages('deploy') {
+       stage('deploy') {
+         agent {
+           dockerfile {
          withDockerRegistry(url:'https://harbor.enncloud.cn'){
          def dockerfile = 'Dockerfile'
          def customImage = docker.build("harbor.enncloud.cn/create-cicd-hub/cicdtest-java:v1126","-f ${dockerfile} .")
          customImage.push()
          }
-       }
+           }
+        }
+         }
+     } 
 }
