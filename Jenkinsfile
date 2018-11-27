@@ -27,4 +27,5 @@ pipeline {
          customImage.push()
          }
        }
-}
+   }
+}  
