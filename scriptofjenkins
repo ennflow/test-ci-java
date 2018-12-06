@@ -1,0 +1,50 @@
+pipeline {
+  agent none
+     stages {
+        stage('download_code') { 
+           agent {
+               docker {
+                    image 'harbor.enncloud.cn/paas/clone-repo:v2.2' 
+                      }
+                  }
+            steps {
+                    sh 'rm -rf cicdtestproject'
+                    sh 'sleep 60'
+                    sh 'git clone  https://weihongweic:tsdxglMM2009!@gitlab.enncloud.cn/cicdtestgroup/cicdtestproject.git'
+                    sh 'pwd'
+                    sh 'ls cicdtestproject/'
+                    sh 'cp ${WORKSPACE%/*}/testcicd-new-script/cicdtestproject/Dockerfile ${WORKSPACE%/*}/testcicd-new-script/'
+                    sh 'ls'
+                  }
+             }
+       stage('Build') { 
+           agent {
+               docker {
+                    image 'harbor.enncloud.cn/enncloud/ceres-build:jdk8' 
+                      }
+                  }
+            steps {
+                    sh 'javac ${WORKSPACE%/*}/testcicd-new-script/cicdtestproject/OpenUrl/src/pyrmont/*.java'
+                    sh 'ls ${WORKSPACE%/*}/testcicd-new-script/cicdtestproject/OpenUrl/src/pyrmont/'
+                    sh 'echo ====================/openurl======================='
+                    sh 'jar cvfm  ${WORKSPACE%/*}/testcicd-new-script/cicdtestproject/OpenUrl/pyrmont.jar ${WORKSPACE%/*}/testcicd-new-script/cicdtestproject/OpenUrl/mymanifest -C ${WORKSPACE%/*}/testcicd-new-script/cicdtestproject/OpenUrl/src/ .'
+                    sh 'ls ${WORKSPACE%/*}/testcicd-new-script/cicdtestproject/OpenUrl/'
+                  }
+             }
+       stage('Deploy') {
+          agent {
+            docker {
+                   image 'harbor.enncloud.cn/enncloud/image-builder:v2.2'
+             }
+           }
+         steps {
+              sh 'pwd'
+              sh 'ls'
+              sh 'echo *******************************************************************'
+              sh 'ls ${WORKSPACE%/*}/testcicd-new-script/cicdtestproject/OpenUrl/'
+              sh 'docker build -t harbor.enncloud.cn/create-cicd-hub/cicdtest-java:v1206 .'
+              sh 'docker push harbor.enncloud.cn/create-cicd-hub/cicdtest-java:v1206'
+            }
+          }     
+       }     
+    }
